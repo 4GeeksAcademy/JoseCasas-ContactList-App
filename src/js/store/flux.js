@@ -22,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				) {
 					console.error(response, "Problem Adding contact")
 				}
-				setStore({ contacts: [...getStore().contacts, contact] })
+				setStore({ contacts: getData.contacts })
 			},
 
 			getContacts: async () => {
@@ -42,8 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-type": "application/json" },
 					body: JSON.stringify(contact)
 				})
-				
-				// setStore({ contacts: getContacts})
+
 			},
 
 			updateContactData: (data) => {
@@ -51,8 +50,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-
-
+			deleteContact: async (id) => {
+				let deleteResponse = await fetch(`https://playground.4geeks.com/contact/agendas/JoseCasas1/contacts/${id}`, {
+					method: "DELETE",
+				})
+				if (
+					!deleteResponse.ok
+				) {
+					console.error(deleteResponse, "Problem Deleting contact")
+				} else {
+					getActions().getContacts();
+					console.log("HERE ARE YOUR CONTACTS AFTER DELETING")
+				}
+			},
 
 
 

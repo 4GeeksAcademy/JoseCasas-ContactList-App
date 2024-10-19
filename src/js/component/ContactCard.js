@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { Context } from "../store/appContext";
 
 export default function ContactCard(props) {
-  const {actions} = useContext(Context)
+  const { actions } = useContext(Context)
   console.log(props, "PROPPPPPPPPPPS")
   return (
     <div className="card" style={{ "width": "18rem" }}>
@@ -14,9 +14,12 @@ export default function ContactCard(props) {
         <p className="card-text">{props.address}</p>
         <p className="card-text">{props.phone}</p>
         <Link to="/UpdateContact">
-          <a onClick={ () => actions.updateContactData(props) } href="#" className="btn btn-info">Update Contact</a>
+          <a onClick={() => actions.updateContactData(props)} href="#" className="btn btn-info">Update Contact</a>
         </Link>
-        <a href="#" className="btn btn-danger">Delete Contact</a>
+        <a onClick={() => {
+          actions.deleteContact(props.id)
+          actions.getContacts()
+        }} href="#" className="btn btn-danger">Delete Contact</a>
       </div>
     </div>
   )

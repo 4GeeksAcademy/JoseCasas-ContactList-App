@@ -8,6 +8,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 	const [agenda, setAgenda] = useState([])
 	
+	
 	useEffect(() => {
 		async function createUser() {
 			let response = await fetch("https://playground.4geeks.com/contact/agendas/JoseCasas1")
