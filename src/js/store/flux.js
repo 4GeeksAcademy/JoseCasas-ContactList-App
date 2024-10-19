@@ -1,20 +1,62 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			contacts: [
+				// { "name": "Jonh", "address": "5th St", "phone": "555-555-5555", "email": "Jonh@test.com" },
+				// { "name": "Anna", "address": "18th Ave", "phone": "777-777-7777", "email": "Anna@test.com" },
+			],
+			updateContact: {}
 		},
 		actions: {
+
+			addContact: async (name, email, address, phone) => {
+				let contact = { name: name, email: email, address: address, phone: phone }
+
+				let response = await fetch("https://playground.4geeks.com/contact/agendas/JoseCasas1/contacts", {
+					method: "POST",
+					headers: { "Content-type": "application/json" },
+					body: JSON.stringify(contact)
+				})
+				if (
+					!response.ok
+				) {
+					console.error(response, "Problem Adding contact")
+				}
+				setStore({ contacts: [...getStore().contacts, contact] })
+			},
+
+			getContacts: async () => {
+				let getResponse = await fetch("https://playground.4geeks.com/contact/agendas/JoseCasas1/contacts")
+
+				let getData = await getResponse.json()
+				console.log(getData, "HERE ARE YOUR CONTACTS")
+				setStore({ contacts: getData.contacts })
+			},
+
+
+			updateContact: async (name, email, address, phone, id) => {
+				let contact = { name: name, email: email, address: address, phone: phone }
+
+				let putResponse = await fetch(`https://playground.4geeks.com/contact/agendas/JoseCasas1/contacts/${id}`, {
+					method: "PUT",
+					headers: { "Content-type": "application/json" },
+					body: JSON.stringify(contact)
+				})
+				
+				// setStore({ contacts: getContacts})
+			},
+
+			updateContactData: (data) => {
+				setStore({ updateContact: data })
+
+			},
+
+
+
+
+
+
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
