@@ -12,17 +12,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addContact: async (name, email, address, phone) => {
 				let contact = { name: name, email: email, address: address, phone: phone }
 
-				let response = await fetch("https://playground.4geeks.com/contact/agendas/JoseCasas1/contacts", {
+				let addResponse = await fetch("https://playground.4geeks.com/contact/agendas/JoseCasas1/contacts", {
 					method: "POST",
 					headers: { "Content-type": "application/json" },
 					body: JSON.stringify(contact)
 				})
 				if (
-					!response.ok
+					!addResponse.ok
 				) {
-					console.error(response, "Problem Adding contact")
+					console.error(addResponse, "Problem Adding contact")
 				}
-				setStore({ contacts: getData.contacts })
+				setStore({ contacts: addResponse.contacts })
 			},
 
 			getContacts: async () => {
@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-type": "application/json" },
 					body: JSON.stringify(contact)
 				})
-
+				setStore({ contacts: putResponse.contacts })
 			},
 
 			updateContactData: (data) => {
@@ -67,29 +67,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
+			// // Use getActions to call a function within a fuction
+			// exampleFunction: () => {
+			// 	getActions().changeColor(0, "green");
+			// },
+			// loadSomeData: () => {
+			// 	/**
+			// 		fetch().then().then(data => setStore({ "foo": data.bar }))
+			// 	*/
+			// },
+			// changeColor: (index, color) => {
+			// 	//get the store
+			// 	const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+			// 	//we have to loop the entire demo array to look for the respective index
+			// 	//and change its color
+			// 	const demo = store.demo.map((elm, i) => {
+			// 		if (i === index) elm.background = color;
+			// 		return elm;
+			// 	});
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
+			// 	//reset the global store
+			// 	setStore({ demo: demo });
+			// }
 		}
 	};
 };
