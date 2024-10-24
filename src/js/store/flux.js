@@ -23,6 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(addResponse, "Problem Adding contact")
 				}
 				setStore({ contacts: addResponse.contacts })
+				getActions().getContacts()
 			},
 
 			getContacts: async () => {
@@ -43,10 +44,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify(contact)
 				})
 				setStore({ contacts: putResponse.contacts })
+				getActions().getContacts()
 			},
 
 			updateContactData: (data) => {
 				setStore({ updateContact: data })
+
 
 			},
 
