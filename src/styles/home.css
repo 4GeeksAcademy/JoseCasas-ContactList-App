@@ -1,0 +1,17 @@
+body {
+    background-image: url("https://images.pexels.com/photos/32307/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800");
+    background-size: cover;
+}
+.btnE {
+    font-weight: bold;
+    box-shadow: 3px 3px 2px rgb(36, 117, 164);
+    background-color: rgb(170, 205, 236);
+}
+.btnD {
+    font-weight: bold;
+    box-shadow: 3px 3px 2px rgb(95, 15, 11);
+    background-color: rgb(226, 36, 36);
+}
+.card {
+  background-color: rgba(213, 162, 99, 0.909);
+}

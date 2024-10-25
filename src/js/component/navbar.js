@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-light bg-light mt-auto mb-3 text-center">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">Contact List</span>
+				<img
+					src="https://seeklogo.com/images/G/google-contacts-logo-A07A806C3B-seeklogo.com.png"
+					className="mx-5"
+					style={{ height: "60px" }}
+				/>
+				<span className="navbar-brand h1"><i class="fa-regular fa-address-book"></i>Jose's Contact List</span>
 			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
-			</div>
 		</nav>
 	);
 };

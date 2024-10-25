@@ -17,7 +17,7 @@ export default function AddContacts() {
    }
  
     return (
-        <div>
+        <div className="container bg-dark pt-3">
             <div className="input-group mb-3">
                 <span className="input-group-text" id="inputGroup-sizing-default">Name</span>
                 <input onChange={(ev) => setName(ev.target.value)} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
@@ -35,7 +35,7 @@ export default function AddContacts() {
                 <input onChange={(ev) => setPhone(ev.target.value)} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
             </div>
             <Link to="/">
-            <button className='btn btn-success' onClick={() => addContact()}>Add Contact</button>
+            <button className='btn btn-success mb-3' onClick={() => addContact()}>Add Contact</button>
             </Link>
         </div>
     )
