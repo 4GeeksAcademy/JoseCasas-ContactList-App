@@ -6,9 +6,10 @@ export default function ContactCard(props) {
   const { actions } = useContext(Context)
   console.log(props, "PROPPPPPPPPPPS")
   return (
-    <div className="card d-flex mb-3" style={{ "width": "18rem" }}>
-      {/* <img src="..." className="card-img-top" alt="..." /> */}
+    <div className="card d-flex m-3" style={{ "width": "18rem" }}>
+
       <div className="card-body">
+        <img src="https://xsgames.co/randomusers/assets/avatars/pixel/35.jpg" />
         <h5 className="card-title">Name: {props.name}</h5>
         <p className="card-text">Email: {props.email}</p>
         <p className="card-text">Address: {props.address}</p>
